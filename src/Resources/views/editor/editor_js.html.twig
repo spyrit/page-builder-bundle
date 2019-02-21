@@ -1,0 +1,9 @@
+<script>
+    function dragBlock(ev) {
+      ev.dataTransfer.setData('block_id', ev.target.getAttribute('data-id'));
+    }
+
+    function dragWidget(ev) {
+      ev.dataTransfer.setData('widget_id', ev.target.id);
+    }
+</script>

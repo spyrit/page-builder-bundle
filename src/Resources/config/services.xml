@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="spyrit_page_builder.render_manager" class="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\RenderManager" public="true">
+            <argument key="$templating" type="service" id="twig" />
+        </service>
+        <service id="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\RenderManager" alias="spyrit_page_builder.render_manager" public="false" />
+        <service id="Spyrit\Bundle\SpyritPageBuilderBundle\Controller\EditorController" public="true">
+            <tag name="controller.service_arguments" />
+            <argument key="$renderManager" type="service" id="spyrit_page_builder.render_manager" />
+        </service>
+        <service id="spyrit_page_builder.builder_manager" class="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\BuilderManager" public="true">
+            <argument key="$entityManager" type="service" id="doctrine.orm.entity_manager" />
+            <argument key="$formFactory" type="service" id="form.factory" />
+        </service>
+        <service id="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\BuilderManager" alias="spyrit_page_builder.builder_manager" public="false" />
+    </services>
+</container>
