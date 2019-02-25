@@ -1,17 +1,19 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
         {{ page|raw }}
     </div>
-    <div class="col-md-4">
-        <h2>{{ 'Widgets disponibles' }}</h2>
-        <div class="card" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
-                {% for widget,id in widgets %}
-                    <li class="list-group-item widget-item" draggable="true" ondragstart="dragWidget(event)" id="widget-{{ id }}">
-                        <span>{{ widget }}</span>
-                    </li>
-                {% endfor %}
-            </ul>
+    <div class="col-md-3">
+        <div id="widgets">
+            <h2>{{ 'Widgets disponibles' }}</h2>
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    {% for widget,id in widgets %}
+                        <li class="list-group-item widget-item" draggable="true" ondragstart="dragWidget(event)" id="widget-{{ id }}">
+                            <span>{{ widget }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
