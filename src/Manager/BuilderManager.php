@@ -44,9 +44,9 @@ class BuilderManager
     public function deleteLine(PageInterface $page, $line) {
         $lines = $page->getLines();
 
-        foreach ($lines as $line_) {
-            if ($line_ = $line) {
-                foreach ($line_->getZones() as $zone_) {
+        foreach ($lines as $key => $zones) {
+            if ($key == $line) {
+                foreach ($zones as $zone_) {
                     foreach ($zone_->getBlocks() as $block) {
                         $this->entityManager->remove($block);
                     }
