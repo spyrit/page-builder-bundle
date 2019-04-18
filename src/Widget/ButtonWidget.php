@@ -18,13 +18,14 @@ class ButtonWidget extends BaseWidget
 
     public function getName()
     {
-        return 'Bloc bouton';
+        return 'Button block';
     }
 
     public function getDefaultConfiguration()
     {
         return [
             'classes' => '',
+            'target' => '_self',
             'title' => 'Button',
             'url' => '#',
         ];

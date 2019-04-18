@@ -21,7 +21,7 @@ class TextWidget extends BaseWidget
 
     public function getName()
     {
-        return 'Bloc texte';
+        return 'Text block';
     }
 
     public function getTemplate()

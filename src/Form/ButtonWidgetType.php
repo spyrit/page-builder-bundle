@@ -11,6 +11,7 @@ class ButtonWidgetType extends BaseWidgetType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        parent::buildForm($builder, $options);
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Title',
@@ -18,8 +19,10 @@ class ButtonWidgetType extends BaseWidgetType
             ->add('url', UrlType::class, [
                 'label' => 'URL',
             ])
+            ->add('target', TextType::class, [
+                'label' => 'Target',
+            ])
         ;
-        parent::buildForm($builder, $options);
     }
 
     public function configureOptions(OptionsResolver $resolver)
