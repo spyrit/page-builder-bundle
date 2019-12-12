@@ -6,12 +6,13 @@ use Spyrit\Bundle\SpyritPageBuilderBundle\Model\BlockInterface;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Model\PageInterface;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Model\ZoneInterface;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Widget\BaseWidget;
+use Twig\Environment;
 
 class RenderManager
 {
     private $templating;
 
-    public function __construct(\Twig_Environment $templating)
+    public function __construct(Environment $templating)
     {
         $this->templating = $templating;
     }
@@ -44,7 +45,7 @@ class RenderManager
 
     public function renderBlock(BlockInterface $block, $editor = false)
     {
-        $content = $this->renderWidget($block->getWidget(), $block->getConfiguration(), $editor);
+        $content = $this->renderWidget($block, $editor);
 
         $template = $editor ? $block->getEditorTemplate() : $block->getTemplate();
 
@@ -54,9 +55,11 @@ class RenderManager
         ]);
     }
 
-    public function renderWidget(BaseWidget $widget, $config, $editor = false)
+    public function renderWidget(BlockInterface $block, $editor = false)
     {
-        $parameters = array_merge($widget->getDefaultConfiguration(), $config);
+        $widget = $block->getWidget();
+        $parameters = array_merge($widget->getDefaultConfiguration(), $block->getConfiguration());
+        $parameters['block'] = $block;
         $parameters['widget'] = $widget;
 
         $template = $editor ? $widget->getEditorTemplate() : $widget->getTemplate();

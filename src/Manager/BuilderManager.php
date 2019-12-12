@@ -5,8 +5,6 @@ namespace Spyrit\Bundle\SpyritPageBuilderBundle\Manager;
 use Doctrine\ORM\EntityManagerInterface;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Model\BlockInterface;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Model\PageInterface;
-use Spyrit\Bundle\SpyritPageBuilderBundle\Model\ZoneInterface;
-use Spyrit\Bundle\SpyritPageBuilderBundle\Widget\BaseWidget;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 

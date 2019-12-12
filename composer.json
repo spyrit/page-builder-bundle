@@ -18,7 +18,8 @@
     "require": {
         "php": ">=7.1.1",
         "symfony/form": "^4.0",
-        "doctrine/orm": "^2.5"
+        "doctrine/orm": "^2.5",
+        "twig/twig": "^2.7"
     },
     "autoload": {
         "psr-4": {
