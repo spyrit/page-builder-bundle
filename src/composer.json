@@ -1,0 +1,29 @@
+{
+    "name": "spyrit/page-builder-bundle",
+    "description": "A page builder for Symfony and Doctrine.",
+    "keywords": ["page builder", "symfony", "doctrine"],
+    "homepage": "https://github.com/spyrit/SpyritPageBuilderBundle.git",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pierre-Yves Guerder",
+            "email": "pierre-yves.guerder@spyrit.net",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "support@spyrit.net"
+    },
+    "require": {
+        "php": ">=7.1.1",
+        "symfony/form": "^4.0",
+        "doctrine/orm": "^2.5",
+        "twig/twig": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spyrit\\Bundle\\SpyritPageBuilderBundle\\": "src/"
+        }
+    }
+}
