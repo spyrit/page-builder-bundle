@@ -18,7 +18,7 @@ class EditorController extends AbstractController
     public function editorAction(PageInterface $page, iterable $widgets)
     {
         return $this->render('@SpyritPageBuilder/editor/editor.html.twig', [
-            'page' => $this->renderManager->renderPage($page, true),
+            'html' => $this->renderManager->renderPage($page, true),
             'widgets' => $widgets,
         ]);
     }

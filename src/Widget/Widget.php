@@ -33,7 +33,7 @@ class Widget
             return self::TEXT;
         }
 
-        throw new LogicException();
+        throw new LogicException('Unknown widget. To implement your own widgets, extend this class.');
     }
 
     public static function instantiate(string $type)
@@ -48,7 +48,7 @@ class Widget
             case self::TEXT:
                 return new TextWidget();
             default:
-                throw new LogicException();
+                throw new LogicException('Unknown widget. To implement your own widgets, extend this class.');
         }
     }
 }

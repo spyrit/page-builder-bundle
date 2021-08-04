@@ -64,6 +64,8 @@ class Block implements BlockInterface
 
 You will have to implement the `getConfiguration`, `setConfiguration` and `getWidget` methods in your class to match your storage.
 
+If you add custom widgets, you will also need to implement `setWidget`.
+
 ```
 <?php
 
