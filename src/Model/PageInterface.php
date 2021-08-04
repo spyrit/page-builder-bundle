@@ -2,19 +2,21 @@
 
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Model;
 
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+
 interface PageInterface
 {
-    public function getEditorTemplate();
+    public function getEditorTemplate(): string;
 
-    public function getLineEditorTemplate();
+    public function getLineEditorTemplate(): string;
 
-    public function getLineTemplate();
+    public function getLineTemplate(): string;
 
-    public function getLines();
+    public function getLines(): iterable;
 
-    public function getLineFormType();
+    public function getLineFormType(): string;
 
-    public function getTemplate();
+    public function getTemplate(): string;
 
-    public function getZones();
+    public function getZones(): iterable;
 }

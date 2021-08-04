@@ -1,7 +1,6 @@
 <div>
-    <img class="{{ classes }}" 
-        src="{{ asset(src) }}"
-        width="{{ width }}px"
-        height="{{ height }}px">
-    </img>
+    <img class="{{ classes ?? '' }}"
+         src="{{ src ?? '' }}"
+         {% if width %}width="{{ width }}px"{% endif %}
+         {% if height %}height="{{ height }}px" />{% endif %}
 </div>

@@ -18,9 +18,11 @@ class ImageWidgetType extends BaseWidgetType
             ])
             ->add('width', IntegerType::class, [
                 'label' => 'Width',
+                'required' => false,
             ])
             ->add('height', IntegerType::class, [
                 'label' => 'Height',
+                'required' => false,
             ])
         ;
     }

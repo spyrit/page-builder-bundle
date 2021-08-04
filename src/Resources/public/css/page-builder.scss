@@ -1,0 +1,49 @@
+.page-editor {
+  .widget-item {
+    cursor: grab;
+  }
+  .cms-block {
+    background-color: lightgrey;
+    min-height: 50px;
+    min-width: 50px;
+    padding: 20px;
+    &:hover {
+      background-color: grey;
+      cursor: pointer;
+    }
+  }
+  .cms-line {
+    border-bottom: 2px solid red;
+    position: relative;
+  }
+  .cms-create-line {
+    background-color: #eee;
+    &:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+  }
+  .cms-page {
+    border: 1px solid green;
+    overflow: scroll;
+  }
+  .cms-zone {
+    border-left: 2px solid green;
+    border-right: 2px solid green;
+    min-height: 70px;
+    min-width: 70px;
+    &:hover {
+      background-color: wheat;
+    }
+  }
+  .delete-line {
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    z-index: 10;
+  }
+  #widgets {
+    position: sticky;
+    top: 20px;
+  }
+}

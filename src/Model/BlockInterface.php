@@ -6,15 +6,15 @@ use Spyrit\Bundle\SpyritPageBuilderBundle\Widget\BaseWidget;
 
 interface BlockInterface
 {
-    public function getConfiguration();
+    public function getConfiguration(): array;
 
-    public function getEditorTemplate();
+    public function getEditorTemplate(): string;
 
-    public function getTemplate();
+    public function getTemplate(): string;
 
-    public function getWidget();
+    public function getWidget(): BaseWidget;
 
-    public function setConfiguration(array $configuration);
+    public function setConfiguration(array $configuration): self;
 
-    public function setWidget(BaseWidget $widget);
+    public function setWidget(BaseWidget $widget): self;
 }

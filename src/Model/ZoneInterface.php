@@ -4,9 +4,9 @@ namespace Spyrit\Bundle\SpyritPageBuilderBundle\Model;
 
 interface ZoneInterface
 {
-    public function getEditorTemplate();
+    public function getEditorTemplate(): string;
 
-    public function getTemplate();
+    public function getTemplate(): string;
 
-    public function getBlocks();
+    public function getBlocks(): iterable;
 }

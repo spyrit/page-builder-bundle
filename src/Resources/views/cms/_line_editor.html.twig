@@ -1,0 +1,4 @@
+<div class="cms-line row">
+    {{ content|raw }}
+</div>
+{{ include('@SpyritPageBuilder/cms/_new_line.html.twig', { position: (zones|first).line + 1 }) }}
