@@ -2,9 +2,9 @@
 
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Form;
 
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ButtonWidgetType extends BaseWidgetType
@@ -25,7 +25,7 @@ class ButtonWidgetType extends BaseWidgetType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => null,

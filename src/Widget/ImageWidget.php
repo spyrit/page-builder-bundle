@@ -3,21 +3,20 @@
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Widget;
 
 use Spyrit\Bundle\SpyritPageBuilderBundle\Form\ImageWidgetType;
-use Spyrit\Bundle\SpyritPageBuilderBundle\Widget\BaseWidget;
 
 class ImageWidget extends BaseWidget
 {
-    public function getFormType()
+    public function getFormType(): string
     {
         return ImageWidgetType::class;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'Bloc Image';
     }
 
-    public function getDefaultConfiguration()
+    public function getDefaultConfiguration(): array
     {
         return [
             'classes' => '',
@@ -27,7 +26,7 @@ class ImageWidget extends BaseWidget
         ];
     }
 
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return '@SpyritPageBuilder/render/image.html.twig';
     }

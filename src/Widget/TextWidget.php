@@ -6,7 +6,7 @@ use Spyrit\Bundle\SpyritPageBuilderBundle\Form\TextWidgetType;
 
 class TextWidget extends BaseWidget
 {
-    public function getDefaultConfiguration()
+    public function getDefaultConfiguration(): array
     {
         return [
             'classes' => '',
@@ -14,17 +14,17 @@ class TextWidget extends BaseWidget
         ];
     }
 
-    public function getFormType()
+    public function getFormType(): string
     {
         return TextWidgetType::class;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'Text block';
     }
 
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return '@SpyritPageBuilder/render/text.html.twig';
     }

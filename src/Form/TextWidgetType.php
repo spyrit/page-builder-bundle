@@ -2,8 +2,8 @@
 
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Form;
 
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TextWidgetType extends BaseWidgetType
@@ -18,7 +18,7 @@ class TextWidgetType extends BaseWidgetType
         parent::buildForm($builder, $options);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => null,

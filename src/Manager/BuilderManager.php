@@ -12,17 +12,23 @@ class BuilderManager
 {
     protected $entityManager;
     protected $formFactory;
+    protected $widgetManager;
 
-    public function __construct(EntityManagerInterface $entityManager, FormFactoryInterface $formFactory)
-    {
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        FormFactoryInterface $formFactory,
+        WidgetManager $widgetManager
+    ) {
         $this->entityManager = $entityManager;
         $this->formFactory = $formFactory;
+        $this->widgetManager = $widgetManager;
     }
 
     public function createBlockForm(BlockInterface $block)
     {
-        $widget = $block->getWidget();
-        $config = $block->getConfiguration() ?: $widget->getDefaultConfiguration();
+        $widgetId = $block->getWidgetId();
+        $widget = $this->widgetManager->instantiate($widgetId);
+        $config = $widget->decodeConfiguration($block->getConfiguration()) ?: $widget->getDefaultConfiguration();
 
         return $this->formFactory->create($widget->getFormType(), $config);
     }
@@ -34,12 +40,14 @@ class BuilderManager
         ]);
     }
 
-    public function deleteBlock(BlockInterface $block) {
+    public function deleteBlock(BlockInterface $block)
+    {
         $this->entityManager->remove($block);
         $this->entityManager->flush();
     }
 
-    public function deleteLine(PageInterface $page, $line) {
+    public function deleteLine(PageInterface $page, $line)
+    {
         $lines = $page->getLines();
 
         foreach ($lines as $key => $zones) {
@@ -59,7 +67,10 @@ class BuilderManager
     {
         if ($form->isSubmitted() && $form->isValid()) {
             $config = $form->getData();
-            $block->setConfiguration($config);
+            $widgetId = $block->getWidgetId();
+            $widget = $this->widgetManager->instantiate($widgetId);
+            $configuration = $widget->encodeConfiguration($config);
+            $block->setConfiguration($configuration);
             $this->entityManager->persist($block);
             $this->entityManager->flush();
 

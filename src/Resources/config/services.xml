@@ -6,6 +6,7 @@
     <services>
         <service id="spyrit_page_builder.render_manager" class="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\RenderManager" public="true">
             <argument key="$templating" type="service" id="twig" />
+            <argument key="$widgetManager" type="service" id="spyrit_page_builder.widget_manager" />
         </service>
         <service id="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\RenderManager" alias="spyrit_page_builder.render_manager" public="false" />
         <service id="Spyrit\Bundle\SpyritPageBuilderBundle\Controller\EditorController" public="true">
@@ -15,7 +16,10 @@
         <service id="spyrit_page_builder.builder_manager" class="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\BuilderManager" public="true">
             <argument key="$entityManager" type="service" id="doctrine.orm.entity_manager" />
             <argument key="$formFactory" type="service" id="form.factory" />
+            <argument key="$widgetManager" type="service" id="spyrit_page_builder.widget_manager" />
         </service>
         <service id="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\BuilderManager" alias="spyrit_page_builder.builder_manager" public="false" />
+        <service id="spyrit_page_builder.widget_manager" class="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\WidgetManager" public="true" />
+        <service id="Spyrit\Bundle\SpyritPageBuilderBundle\Manager\WidgetManager" alias="spyrit_page_builder.widget_manager" public="false" />
     </services>
 </container>

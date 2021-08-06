@@ -9,11 +9,13 @@ use Twig\Environment;
 
 class RenderManager
 {
-    private $templating;
+    protected $templating;
+    protected $widgetManager;
 
-    public function __construct(Environment $templating)
+    public function __construct(Environment $templating, WidgetManager $widgetManager)
     {
         $this->templating = $templating;
+        $this->widgetManager = $widgetManager;
     }
 
     public function renderPage(PageInterface $page, $editor = false): string
@@ -56,8 +58,10 @@ class RenderManager
 
     public function renderWidget(BlockInterface $block, $editor = false): string
     {
-        $widget = $block->getWidget();
-        $parameters = array_merge($widget->getDefaultConfiguration(), $block->getConfiguration());
+        $widgetId = $block->getWidgetId();
+        $widget = $this->widgetManager->instantiate($widgetId);
+        $config = $widget->decodeConfiguration($block->getConfiguration());
+        $parameters = array_merge($widget->getDefaultConfiguration(), $config);
         $parameters['block'] = $block;
         $parameters['widget'] = $widget;
 

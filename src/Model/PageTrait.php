@@ -2,8 +2,6 @@
 
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Model;
 
-use Spyrit\Bundle\SpyritPageBuilderBundle\Widget\BaseWidget;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Form\LineType;
 
 trait PageTrait

@@ -2,8 +2,6 @@
 
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Model;
 
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-
 interface PageInterface
 {
     public function getEditorTemplate(): string;

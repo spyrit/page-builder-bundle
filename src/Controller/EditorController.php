@@ -2,8 +2,8 @@
 
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Controller;
 
-use Spyrit\Bundle\SpyritPageBuilderBundle\Model\PageInterface;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Manager\RenderManager;
+use Spyrit\Bundle\SpyritPageBuilderBundle\Model\PageInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EditorController extends AbstractController

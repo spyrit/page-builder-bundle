@@ -6,22 +6,22 @@ use Spyrit\Bundle\SpyritPageBuilderBundle\Form\ButtonWidgetType;
 
 class ButtonWidget extends BaseWidget
 {
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return '@SpyritPageBuilder/render/button.html.twig';
     }
 
-    public function getFormType()
+    public function getFormType(): string
     {
         return ButtonWidgetType::class;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return 'Button block';
     }
 
-    public function getDefaultConfiguration()
+    public function getDefaultConfiguration(): array
     {
         return [
             'classes' => '',

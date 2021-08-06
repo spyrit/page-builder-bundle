@@ -2,7 +2,6 @@
 
 namespace Spyrit\Bundle\SpyritPageBuilderBundle\Model;
 
-use Spyrit\Bundle\SpyritPageBuilderBundle\Widget\BaseWidget;
 use Spyrit\Bundle\SpyritPageBuilderBundle\Widget\Widget;
 
 trait BlockTrait
@@ -13,18 +12,20 @@ trait BlockTrait
      */
     private $widget_id;
 
-    public function getConfiguration(): array
-    {
-        $config = null; // get $config from your entity
+    /*
+     * It is suggested to store this as encoded JSON in a database.
+     * Encoding/decoding should be performed by the Widget itself.
+     */
+    private $configuration = '';
 
-        return $this->getWidget()->decodeConfiguration($config);
+    public function getConfiguration(): string
+    {
+        return $this->configuration;
     }
 
-    public function setConfiguration(array $config): self
+    public function setConfiguration(string $configuration): self
     {
-        $config = $this->getWidget()->encodeConfiguration($config);
-
-        // store $config in your entity
+        $this->configuration = $configuration;
 
         return $this;
     }
@@ -39,14 +40,14 @@ trait BlockTrait
         return '@SpyritPageBuilder/cms/_block_editor.html.twig';
     }
 
-    public function getWidget(): BaseWidget
+    public function getWidgetId()
     {
-        return Widget::instantiate($this->widget_id);
+        return $this->widget_id;
     }
 
-    public function setWidget(BaseWidget $widget): self
+    public function setWidget($widgetId): self
     {
-        $this->widget_id = Widget::getId($widget);
+        $this->widget_id = $widgetId;
 
         return $this;
     }
