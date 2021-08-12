@@ -1,3 +1,7 @@
 <div class="cms-zone col-{{ zone.size }}" data-id="{{ zone.id }}">
-    {{ content|raw }}
+    {% if content %}
+        {{ content|raw }}
+    {% else %}
+        <div class="empty-line"></div>
+    {% endif %}
 </div>

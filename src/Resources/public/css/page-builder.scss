@@ -1,49 +1,222 @@
 .page-editor {
-  .widget-item {
-    cursor: grab;
+  #widgets-wrapper {
+    position: fixed;
+    top: 150px;
+    z-index: 20;
+    right: 0;
+    background-color: #FCAD15;
+    border-radius: 8px 0px 0px 8px;
+    width: 114px;
+    transition: 0.3s;
+    @media (max-height: 720px) {
+      top: 30px;
+    }
+    @media (max-height: 600px) {
+      max-height: calc(100vh - 100px);
+    }
+    #widgets-opener {
+      display: inline-block;
+      color: #0F447E;
+      padding: 10px 10px 10px 14px;
+      cursor: pointer;
+      background-color: #FCAD15;
+      font-size: 16px;
+      line-height: 1;
+      font-weight: bold;
+      border-radius: 8px 0 0 8px;
+    }
+
+    #widgets {
+      transform: translateX(150%);
+      position: absolute;
+      background: #fcad14;
+      transition: 0.3s;
+      z-index: 20;
+      padding: 8px 20px 15px 20px;
+      top: 29px;
+      width: 210px;
+      border-bottom-right-radius: 8px;
+
+      .card {
+        max-height: 500px;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 12px;               /* width of the entire scrollbar */
+        }
+        &::-webkit-scrollbar-track {
+          background: #fcad14;        /* color of the tracking area */
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #0F447E;    /* color of the scroll thumb */
+          border-radius: 20px;       /* roundness of the scroll thumb */
+          border: 3px solid #fcad14;  /* creates padding around scroll thumb */
+        }
+
+        /* Firefox */
+        scrollbar-width: thin;          /* "auto" or "thin"  */
+        scrollbar-color: #0F447E #fcad14;   /* scroll thumb & track */
+
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      .widgets-title {
+        font-size: 20px;
+        padding: 6px 8px;
+        margin: 0;
+      }
+      .widget-item {
+        cursor: grab;
+        padding: 8px 10px;
+        &:hover {
+          background-color: #f8f8f8;
+        }
+      }
+
+      .card {
+        background: transparent;
+        border: none;
+        ul {
+          li {
+            color: #0F447E;
+            background: #FFFFFF;
+            border: 1px dashed #0F447E;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: bold;
+            margin-bottom: 9px;
+            border-radius: 8px;
+          }
+        }
+      }
+    }
+    &.active {
+      width: 210px;
+      #widgets {
+        transform: translateX(0);
+      }
+
+      #widgets-opener {
+        width: 100%;
+      }
+    }
   }
+
   .cms-block {
-    background-color: lightgrey;
+    margin-bottom: 32px;
+    border: 2px dotted #0F447E;;
     min-height: 50px;
     min-width: 50px;
-    padding: 20px;
+    padding: 16px 16px 24px 16px;
+    border-radius: 8px;
+    position: relative;
     &:hover {
-      background-color: grey;
+      background-color: #F2F9FF;
       cursor: pointer;
+      .buttons-wrapper {
+        display: flex;
+      }
+    }
+
+    .buttons-wrapper {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(50%);
+      left: 0;
+      padding: 16px;
+      display: none;
+      .btn {
+        width: 34px;
+        height: 34px;
+        position: relative;
+        padding: 0;
+        &:hover {
+          opacity: 0.85;
+        }
+        img {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
     }
   }
   .cms-line {
-    border-bottom: 2px solid red;
     position: relative;
+    padding-top: 16px;
+    &:before {
+      content: '';
+      background-color: #DDDDDD;
+      height: 8px;
+      width: calc(100% - 32px);
+      position: absolute;
+      left: 16px;
+      top: 0;
+    }
+
+    .empty-line {
+      padding: 20px;
+      text-align: center;
+      border: 2px dotted #0F447E;
+      color: #0F447E;
+      background-color: #F2F9FF;
+      border-radius: 8px;
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
   }
+
   .cms-create-line {
     background-color: #eee;
+    margin-bottom: 26px;
+    padding: 6px;
     &:hover {
       background-color: #ddd;
       cursor: pointer;
     }
   }
-  .cms-page {
-    border: 1px solid green;
-    overflow: scroll;
-  }
   .cms-zone {
-    border-left: 2px solid green;
-    border-right: 2px solid green;
     min-height: 70px;
     min-width: 70px;
-    &:hover {
-      background-color: wheat;
+    position: relative;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    &:before {
+      content: '';
+      background-color: #B9B9B9;
+      height: 8px;
+      width: calc(100% - 32px);
+      position: absolute;
+      left: 16px;
+      top: -16px;
     }
   }
   .delete-line {
     position: absolute;
-    right: -20px;
-    bottom: 0;
+    right: 40px;
+    top: 3px;
     z-index: 10;
-  }
-  #widgets {
-    position: sticky;
-    top: 20px;
+    transform: translateY(-50%);
+    .btn {
+      width: 34px;
+      height: 34px;
+      position: relative;
+      padding: 0;
+      img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
   }
 }
