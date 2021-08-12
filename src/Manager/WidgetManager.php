@@ -27,7 +27,7 @@ class WidgetManager
             return Widget::TEXT;
         }
 
-        throw new LogicException();
+        throw new LogicException('Unknown widget '.class_basename($widget).'. To implement your own widgets, extend the WidgetManager.');
     }
 
     public function instantiate(string $type): BaseWidget
@@ -42,7 +42,7 @@ class WidgetManager
             case Widget::TEXT:
                 return new TextWidget();
             default:
-                throw new LogicException();
+                throw new LogicException('Unknown widget '.$type.'. To implement your own widgets, extend the WidgetManager.');
         }
     }
 }
