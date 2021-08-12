@@ -1,21 +1,31 @@
-<div class="row">
-    <div class="col-md-9">
+<div class="d-flex">
+    <div>
         {{ html|raw }}
     </div>
-    <div class="col-md-3">
-        <div id="widgets">
-            <h2>{{ 'Widgets disponibles' }}</h2>
-            <div class="card">
-                <ul class="list-group list-group-flush">
-                    {% for widget,id in widgets %}
-                        <li class="list-group-item widget-item" draggable="true" ondragstart="dragWidget(event)" id="widget-{{ id }}">
-                            <span>{{ widget }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
+    <div>
+        <div id="widgets-wrapper">
+            <div id="widgets-opener"><i class="fas fa-arrows-alt"></i> Widgets</div>
+            <div id="widgets">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        {% for widget,id in widgets %}
+                            <li class="list-group-item widget-item" draggable="true" ondragstart="dragWidget(event)" id="widget-{{ id }}">
+                                <span>{{ widget }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 {{ include('@SpyritPageBuilder/editor/editor_js.html.twig') }}
+
+<script>
+    let widgets_opener = document.getElementById('widgets-opener');
+    let widgets_wrapper = document.getElementById('widgets-wrapper');
+    widgets_opener.onclick = function() {
+        widgets_wrapper.classList.toggle("active");
+    }
+</script>
